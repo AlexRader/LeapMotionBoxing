@@ -99,11 +99,12 @@ namespace Leap.Unity.Interaction {
     /// curved user interfaces.
     /// </summary>
     private Hand _unwarpedHandData = new Hand();
-
+    
+    /// edited to public.... hopefully it doesnt break anything
     /// <summary>
     /// Will be null when not tracked, otherwise contains the same data as _handData.
     /// </summary>
-    private Hand _hand;
+    public Hand _hand;
 
     #endregion
 
