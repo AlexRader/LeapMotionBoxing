@@ -42,7 +42,8 @@ namespace Leap.Unity.Interaction
         public IEnumerator testing()
         {
             yield return new WaitForSeconds(1.0f);
-            handRef = myHand.GetComponent<InteractionHand>()._hand;
+            if (myHand.GetComponent<InteractionHand>()._hand.IsLeft)
+                handRef = myHand.GetComponent<InteractionHand>()._hand;
             //myHand = GameObject.Find("Interaction Hand (Left)");
         }
 
