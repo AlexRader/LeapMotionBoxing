@@ -23,7 +23,7 @@ namespace Leap.Unity.Interaction
         {
             Debug.Log(handRef);
             Debug.Log(handRef.Fingers[1].Type);
-            if (handRef.Fingers[1].Type != 0)
+            if (handRef.Fingers[1].Type != 0 && handRef.IsLeft)
             {
                 distance = Vector3.Distance(handRef.Fingers[1].bones[3].Center.ToVector3(),
                                 handRef.Fingers[1].bones[0].Center.ToVector3());
@@ -37,13 +37,17 @@ namespace Leap.Unity.Interaction
                     timer = 1;
                 }
             }
+            Debug.Log(myHand.activeSelf);
         }
 
         public IEnumerator testing()
         {
             yield return new WaitForSeconds(1.0f);
-            if (myHand.GetComponent<InteractionHand>()._hand.IsLeft)
-                handRef = myHand.GetComponent<InteractionHand>()._hand;
+            if (myHand != null)
+            {
+                if (myHand.GetComponent<InteractionHand>()._hand.IsLeft)
+                    handRef = myHand.GetComponent<InteractionHand>()._hand;
+            }
             //myHand = GameObject.Find("Interaction Hand (Left)");
         }
 
