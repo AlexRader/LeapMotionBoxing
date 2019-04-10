@@ -27,7 +27,7 @@ namespace Leap.Unity.Interaction
         // Update is called once per frame
         void Update()
         {
-            Debug.Log(handRef);
+            //Debug.Log(handRef);
             if (handActive.activeSelf)//handRef.Fingers[1].Type != 0 && handRef.IsLeft)
             {
                 distance = Vector3.Distance(handRef.Fingers[1].bones[3].Center.ToVector3(),
@@ -42,7 +42,7 @@ namespace Leap.Unity.Interaction
                     timer = 1;
                 }
             }
-            Debug.Log(handActive.activeSelf);
+            //Debug.Log(handActive.activeSelf);
 
             if (firstList)
             {
@@ -65,17 +65,17 @@ namespace Leap.Unity.Interaction
         public void TrackFirstList()
         {
             Debug.Log("systemStuff");
-            TurnOff();
+            //TurnOff();
         }
         public void TrackSecondList()
         {
             Debug.Log("abilitiesMovement");
-            TurnOff();
+            //TurnOff();
         }
         public void TrackThirdList()
         {
             Debug.Log("abilitiesAttack");
-            TurnOff();
+            //TurnOff();
         }
 
         void TurnOff()

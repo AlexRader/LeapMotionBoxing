@@ -1113,6 +1113,13 @@ namespace Leap.Unity.Interaction {
 
       if (_contactingControllers.Count == controllers.Count) {
         OnContactBegin();
+                //ill try and do some stuff here Alex Change
+                //Debug.Log(controllers.Count);
+                if (GetComponent<DummyHealth>() != null)
+                {
+                    GetComponent<DummyHealth>().SubtractFromHP(controllers[0].velocity, controllers[0].isLeft);
+                }
+                
       }
     }
 
