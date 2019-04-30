@@ -8,6 +8,8 @@ public class FullResetScript : DefaultType
     public Vector3 pos;
     public Quaternion quat;
     float hp;
+    public Material reset;
+
     // Use this for initialization
     void Start()
     {
@@ -39,5 +41,6 @@ public class FullResetScript : DefaultType
     {
         ResetObjectPos();
         interactable.GetComponent<DummyHealth>().hp = hp;
+        interactable.GetComponent<MeshRenderer>().material = reset;
     }
 }
