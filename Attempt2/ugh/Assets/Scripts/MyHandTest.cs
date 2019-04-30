@@ -15,12 +15,14 @@ namespace Leap.Unity.Interaction
         public bool firstList;
 
         public GameObject[] checkers;
+        testBehaviors reference;
         // Use this for initialization
         void Start()
         {
             firstList = false;
             distance = 0;
             handRef = myHand.GetComponent<InteractionHand>()._hand;
+            reference = transform.GetChild(0).gameObject.GetComponent<testBehaviors>();
             //StartCoroutine(testing());
         }
 
@@ -65,17 +67,23 @@ namespace Leap.Unity.Interaction
         public void TrackFirstList()
         {
             Debug.Log("systemStuff");
-            //TurnOff();
+            reference.enabled = true;
+            reference.ChangeList1();
+            TurnOff();
         }
         public void TrackSecondList()
         {
             Debug.Log("abilitiesMovement");
-            //TurnOff();
+            reference.enabled = true;
+            reference.ChangeList2();
+            TurnOff();
         }
         public void TrackThirdList()
         {
             Debug.Log("abilitiesAttack");
-            //TurnOff();
+            reference.enabled = true;
+            reference.ChangeList3();
+            TurnOff();
         }
 
         void TurnOff()
@@ -84,26 +92,22 @@ namespace Leap.Unity.Interaction
             for (int i = 0; i < checkers.Length; ++i)
             {
                 checks = checkers[i].GetComponents<ExtendedFingerDetector>();
-                Debug.Log(checks.Length);
                 foreach (ExtendedFingerDetector x in checks)
                 {
                     x.enabled = false;
-                    Debug.Log(x.IsActive);
                 }
             }
             firstList = !firstList;
         }
-        void TurnOn()
+        public void TurnOn()
         {
             ExtendedFingerDetector[] checks;
             for (int i = 0; i < checkers.Length; ++i)
             {
                 checks = checkers[i].GetComponents<ExtendedFingerDetector>();
-                Debug.Log(checks.Length);
                 foreach (ExtendedFingerDetector x in checks)
                 {
                     x.enabled = true;
-                    Debug.Log(x.IsActive);
                 }
             }
             firstList = !firstList;

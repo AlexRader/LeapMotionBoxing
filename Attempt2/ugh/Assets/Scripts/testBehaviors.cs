@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class testBehaviors : MonoBehaviour
 {
-    public GameObject[] interactions;
+    public List<GameObject> interactions;
+    public List<GameObject> interactions1;
+    public List<GameObject> interactions2;
+    public List<GameObject> interactions3;
     bool hold;
     public GameObject currentBehavior;
     float timer;
@@ -26,13 +29,14 @@ public class testBehaviors : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= timerMax)
         {
-            for (int i = 0; i < interactions.Length; ++i)
+            for (int i = 0; i < interactions.Count; ++i)
             {
                 if (interactions[i].activeInHierarchy)
                 {
                     interactions[i].SetActive(false);
                     ++i;
-                    i %= interactions.Length;
+                    i %= interactions.Count;
+
                     interactions[i].SetActive(true);
                     currentBehavior = interactions[i];
                     x = i;
@@ -46,7 +50,7 @@ public class testBehaviors : MonoBehaviour
     public void ActivationStart()
     {
         x += 1;
-        x = x % interactions.Length;
+        x = x % interactions.Count;
         currentBehavior = interactions[x];
         DefaultType temp = currentBehavior.GetComponent<DefaultType>();
 
@@ -66,6 +70,48 @@ public class testBehaviors : MonoBehaviour
     void ActivateCorrectObject()
     {
     }
+
+    public void ChangeList()
+    {
+        for (int i = 0; i < interactions.Count; ++i)
+        {
+            interactions[i].SetActive(false);
+        }
+        interactions.Clear();
+        currentBehavior = null;
+        hold = false;
+    }
+    public void ChangeList1()
+    {
+        ChangeList();
+        for (int i = 0; i < interactions1.Count; ++i)
+        {
+            interactions.Add(interactions1[i]);
+        }
+        currentBehavior = interactions[0];
+        interactions[0].SetActive(true);
+    }
+    public void ChangeList2()
+    {
+        ChangeList();
+        for (int i = 0; i < interactions2.Count; ++i)
+        {
+            interactions.Add(interactions2[i]);
+        }
+        currentBehavior = interactions[0];
+        interactions[0].SetActive(true);
+    }
+    public void ChangeList3()
+    {
+        ChangeList();
+        for (int i = 0; i < interactions3.Count; ++i)
+        {
+            interactions.Add(interactions3[i]);
+        }
+        currentBehavior = interactions[0];
+        interactions[0].SetActive(true);
+    }
+
 
 
 }
