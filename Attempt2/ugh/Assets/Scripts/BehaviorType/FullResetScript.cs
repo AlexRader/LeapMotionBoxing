@@ -41,6 +41,6 @@ public class FullResetScript : DefaultType
     {
         ResetObjectPos();
         interactable.GetComponent<DummyHealth>().hp = hp;
-        interactable.GetComponent<MeshRenderer>().material = reset;
+        GameObject.Find("Plane").GetComponent<MeshRenderer>().material = reset;
     }
 }
